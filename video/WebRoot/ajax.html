@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+
+<script type="text/javascript">
+	window.onload = function(){
+		var bt1 = document.getElementById("bt1");
+		document.title = Math.random();
+		bt1.onclick = function(){
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.onreadystatechange = function(){
+				if(httpRequest.readyState == 4){
+					var data = httpRequest.responseText;
+					data = eval("("+data+")");
+					alert(data.name+":"+data.age);
+				}
+			}
+			
+			httpRequest.open("post", "ajax.do",true);
+			httpRequest.send(null);
+		}
+		
+	}
+</script>
+
+
+</head>
+<body>
+	<input type="button" id="bt1" value="ajax1"/>
+</body>
+</html>
